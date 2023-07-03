@@ -160,10 +160,15 @@ DATABASE_NAME = os.environ.setdefault("DATABASE_NAME", "database.db")
 # Ensure database is inside database directory.
 DATABASE_NAME = os.path.join(DATABASE_DIR, DATABASE_NAME)
 
+# Change password in production
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATABASE_NAME,
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'forum_database', 
+        'USER': 'postgres',
+        'PASSWORD': 'postgres_pass',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
     }
 }
 
