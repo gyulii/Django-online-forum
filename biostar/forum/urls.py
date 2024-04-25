@@ -16,7 +16,7 @@ forum_patterns = [
 
     # Main entry. Post listing.
     path('', views.latest, name='post_list'),
-
+    # TODO path ADAM !!!!
     path(r'info/<str:fname>/', views.pages, name='pages'),
 
     path('votes/', views.myvotes, name='myvotes'),
