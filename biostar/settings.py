@@ -19,7 +19,7 @@ PAGEDOWN_IMAGE_UPLOAD_ENABLED = False
 LANGUAGE_DETECTION = ["en"]
 
 # Set the home page to the engine or forum
-INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = ['0.0.0.0']
 
 # Admin users will be created automatically with DEFAULT_ADMIN_PASSWORD.
 ADMINS = [
@@ -58,8 +58,7 @@ __CURR_DIR = os.path.dirname(join(__file__))
 # The directory relative to which all content is stored.
 BASE_DIR = join(__CURR_DIR, "..")
 
-# Django debug flag.
-DEBUG = True
+
 
 # Default installed apps.
 DEFAULT_APPS = [
@@ -99,8 +98,10 @@ SITE_NAME = "Biostar Engine"
 
 # Deployment specific parameters.
 PROTOCOL = "http"
-HTTP_PORT = '8000'
+HTTP_PORT = '8888'
 BASE_URL = f"{PROTOCOL}://{SITE_DOMAIN}:{HTTP_PORT}"
+RUN_SERVER_PORT = 8080
+
 
 # Change this in production!
 SECRET_KEY = 'secret-key'
@@ -164,15 +165,15 @@ DATABASE_NAME = os.path.join(DATABASE_DIR, DATABASE_NAME)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'forum_database', 
-        'USER': 'postgres',
-        'PASSWORD': 'postgres_pass',
-        'HOST': '127.0.0.1', 
+        'NAME': os.getenv('POSTGRES_DB'), 
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': 'db', 
         'PORT': '5432',
     }
 }
 
-ALLOWED_HOSTS = ['www.lvh.me', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['www.lvh.me', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # The URL configuration.
 ROOT_URLCONF = 'biostar.urls'
