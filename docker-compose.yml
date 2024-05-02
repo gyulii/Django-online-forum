@@ -16,7 +16,6 @@ services:
     expose:
       - 8000
     volumes:
-      - .:/app
       - static_volume:/app/export/static/
       - media_volume:/app/export/media/
     env_file: .env
