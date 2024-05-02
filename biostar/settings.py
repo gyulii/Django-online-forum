@@ -173,7 +173,7 @@ DATABASES = {
     }
 }
 
-ALLOWED_HOSTS = ['www.lvh.me', 'localhost', '127.0.0.1', '0.0.0.0', 'forum']
+ALLOWED_HOSTS = ['www.lvh.me', 'localhost', '127.0.0.1', '0.0.0.0', 'forum' , '10.20.10.151']
 
 # The URL configuration.
 ROOT_URLCONF = 'biostar.urls'
