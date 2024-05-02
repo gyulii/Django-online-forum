@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+#from django.core.management.commands.runserver import Command as runserver
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "biostar.forum.settings")
@@ -19,4 +20,5 @@ if __name__ == "__main__":
                 "forget to activate a virtual environment?"
             )
         raise
+#    runserver.default_port = "8888"
     execute_from_command_line(sys.argv)
