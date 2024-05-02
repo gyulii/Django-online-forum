@@ -3,22 +3,38 @@ version: '3.8'
 services:
   db:
     image: postgres:15
+    restart: always
     env_file: .env
     volumes:
-      - forum_data:/var/lib/postgresql/data
+      - forum_volume:/var/lib/postgresql/data
 
-  web:
+  forum:
     build: .
     container_name: django_base_project
+    restart: always
     command: ["./wait-for-it.sh", "db:5432", "--", "./entry-point.sh"]
-    #command: ["./wait-for-it.sh", "db:5432", "--","python", "manage.py", "runserver", "0.0.0.0:8000"]
-    ports:
-      - '10000:8000'
+    expose:
+      - 8000
     volumes:
       - .:/app
+      - static_volume:/app/export/static/
+      - media_volume:/app/export/media/
     env_file: .env
     depends_on:
       - db
 
+  nginx:
+    build: ./config/nginx/
+    restart: always
+    volumes:
+      - static_volume:/app/export/static/
+      - media_volume:/app/export/media/
+    ports:
+      - 80:80
+    depends_on:
+      - forum
+
 volumes:
-  forum_data:
+  forum_volume:
+  static_volume:
+  media_volume:
