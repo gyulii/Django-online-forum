@@ -14,8 +14,8 @@ services:
     restart: always
     command: >
       sh -c "./wait-for-it.sh db:5432 -- &&
-             python manage.py migrate --no-input
-             python manage.py collectstatic --no-input
+             python manage.py migrate --no-input &&
+             python manage.py collectstatic --no-input &&
              python manage.py runserver 0.0.0.0:8000"
     ports:
       - 10000:8000
