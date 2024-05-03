@@ -8,7 +8,7 @@ services:
     volumes:
       - forum_volume:/var/lib/postgresql/data
 
-  forum:
+  forum_dev:
     build: .
     container_name: django_base_project-dev
     restart: always

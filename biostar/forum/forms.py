@@ -254,10 +254,10 @@ def suspend_user(user):
     return
 
 class PostShortForm(forms.Form):
-    MIN_LEN, MAX_LEN = 10, 10000
+    MIN_LEN, MAX_LEN = 1, 10000
 
     content = forms.CharField(widget=forms.Textarea, min_length=MIN_LEN, max_length=MAX_LEN, strip=False,
-                              validators=[valid_language, validate_ascii],)
+                              validators=[validate_ascii],)
 
     def __init__(self, post, user=None, request=None, ptype=Post.COMMENT, *args, **kwargs):
         self.user = user
