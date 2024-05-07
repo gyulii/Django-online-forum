@@ -26,9 +26,7 @@
             <a class="item  {% activate tab "news" %} " href="{% url 'post_topic' 'news' %}">
                 <i class=" newspaper icon"></i> News
             </a>
-            <a class="item {% activate tab "jobs" %} " href="{% url 'post_topic' 'jobs' %}">
-                <i class=" briefcase icon"></i> Jobs
-            </a>
+
 
             <a class="item {% activate tab "tutorial" %} " href="{% url 'post_topic' 'tutorials' %}">
                 <i class=" info circle icon"></i> Tutorials
@@ -39,9 +37,6 @@
 
             <a class="item {% activate tab "tags" %} " href="{% url 'tags_list' %}">
                 <i class="tag icon"></i>Tags
-            </a>
-            <a class="item {% activate tab "planet" %} " href="{% url 'blog_list' %}">
-                <i class="rss icon"></i> Planet
             </a>
             <a class="item {% activate tab "community" %}" href="{% url 'community_list' %}">
                 <i class=" world icon"></i>
@@ -110,8 +105,7 @@
                     Sign Up</a>
             {% endif %}
 
-            <a class="item {% activate tab "about" %}"><i class="info circle icon"></i>About
-            </a>
+
         </div>
 
 

@@ -16,7 +16,7 @@ defusedxml==0.6.0
 Django==3.2.15
 django-allauth==0.44.0
 django-appconf==1.0.4
-#django-compressor==2.4
+django-compressor
 django-debug-toolbar==3.2.1
 django-mailer==2.1
 django-pagedown==2.2.0

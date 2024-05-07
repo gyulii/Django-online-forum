@@ -200,7 +200,7 @@ def post_search(request):
     revsort = order == 'date'
     results, indexed = search.perform_search(query=query, page=page, reverse=revsort, sortedby=sortedby)
 
-    results = Post.objects.filter(Q(title__icontains = query) | Q(content__icontains= query) )
+    results = Post.objects.filter(Q(title__icontains = query) | Q(content__icontains= query))
     print(results)
 
     context = dict(results=results, query=query, indexed=indexed, order=order)

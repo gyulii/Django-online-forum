@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    env_file: .env
+    volumes:
+      - forum_volume:/var/lib/postgresql/data
+
+  forum_dev:
+    build: .
+    container_name: django_base_project-dev
+    restart: always
+    command: >
+      sh -c "./wait-for-it.sh db:5432 -- &&
+             python manage.py migrate --no-input &&
+             python manage.py collectstatic --no-input &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 10000:8000
+    volumes:
+      - .:/app
+    env_file: .env
+    depends_on:
+      - db
+
+
+volumes:
+  forum_volume:
+  static_volume:
+  media_volume:
